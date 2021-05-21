@@ -31,6 +31,8 @@ public class App extends Application {
         root = new VBox();
         scene = new Scene(root);
 
+        run();
+
         // setup stage
         stage.setTitle("WeatherApp");
         stage.setScene(scene);
@@ -38,5 +40,23 @@ public class App extends Application {
         stage.setMinWidth(600);
         stage.sizeToScene();
         stage.show();
+    }
+
+    public void loadFileMenu() {
+        HBox hbox = new HBox();
+        MenuBar menuBar = new MenuBar();
+        menuBar.setMinWidth(600);
+        Menu file = new Menu("File");
+        menuBar.getMenus().add(file);
+        MenuItem exit = new MenuItem("Exit");
+        file.getItems().add(exit);
+        exit.setOnAction(event -> System.exit(0));
+        hbox.getChildren().add(menuBar);
+        HBox.setHgrow(menuBar, Priority.ALWAYS);
+        root.getChildren().add(hbox);
+    }
+
+    public void run() {
+        loadFileMenu();
     }
 }
