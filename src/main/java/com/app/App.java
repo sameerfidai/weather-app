@@ -120,9 +120,11 @@ public class App extends Application {
         JsonElement jName = jLocation.get("name");
         JsonElement jCountry = jLocation.get("country");
         JsonElement jTime = jLocation.get("localtime");
-
         JsonObject jCurrent = result.getAsJsonObject("current");
         JsonElement jTemperature = jCurrent.get("temperature");
+        String tempInCelsius = jTemperature.getAsString();
+        int celsius = Integer.parseInt(tempInCelsius);
+        double tempInFahrenheit = (celsius * (9 / 5)) + 32;
         JsonElement jFeelsLike = jCurrent.get("feelslike");
         JsonElement jHumidity = jCurrent.get("humidity");
         JsonElement jWindSpeed = jCurrent.get("wind_speed");
@@ -138,15 +140,16 @@ public class App extends Application {
         Label name = new Label("Name: " + jName.getAsString());
         Label country = new Label("Country: " + jCountry.getAsString());
         Label time = new Label("Time: " + jTime.getAsString());
-        Label temperature = new Label("Temperature: " + jTemperature.getAsString());
+        Label temperature = new Label("Temperature: " + jTemperature.getAsString() + "°");
+        Label tempInF = new Label("Temperature: " + tempInFahrenheit + "°");
         Label tempDescription = new Label("Description: " + description);
         Label feelsLike = new Label("Feels Like: " + jFeelsLike.getAsString());
         Label humidity = new Label("Humidity: " + jHumidity.getAsString());
         Label windSpeed = new Label("Wind Speed: " + jWindSpeed.getAsString());
         Label windDegree = new Label("Wind Degree: " + jWindDegree.getAsString());
 
-        info.getChildren().addAll(imgView, name, country, time, temperature, tempDescription, feelsLike, humidity,
-                windSpeed, windDegree);
+        info.getChildren().addAll(imgView, name, country, time, temperature, tempInF, tempDescription, feelsLike,
+                humidity, windSpeed, windDegree);
         info.setAlignment(Pos.CENTER);
         root.getChildren().add(info);
     }
