@@ -1,7 +1,6 @@
 package com.app;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -16,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import com.google.gson.*;
 import javafx.scene.layout.*;
@@ -123,8 +121,8 @@ public class App extends Application {
         JsonObject jCurrent = result.getAsJsonObject("current");
         JsonElement jTemperature = jCurrent.get("temperature");
         String tempInCelsius = jTemperature.getAsString();
-        int celsius = Integer.parseInt(tempInCelsius);
-        double tempInFahrenheit = (celsius * (9 / 5)) + 32;
+        double celsius = Double.parseDouble(tempInCelsius);
+        double tempInFahrenheit = (celsius * 1.8) + 32;
         JsonElement jFeelsLike = jCurrent.get("feelslike");
         JsonElement jHumidity = jCurrent.get("humidity");
         JsonElement jWindSpeed = jCurrent.get("wind_speed");
