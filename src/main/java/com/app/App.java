@@ -139,9 +139,9 @@ public class App extends Application {
         Label country = new Label("Country: " + jCountry.getAsString());
         Label time = new Label("Time: " + jTime.getAsString());
         Label temperature = new Label("Temperature: " + jTemperature.getAsString() + "°");
-        Label tempInF = new Label("Temperature: " + tempInFahrenheit + "°");
+        Label tempInF = new Label("Temperature (F): " + tempInFahrenheit + "°");
         Label tempDescription = new Label("Description: " + description);
-        Label feelsLike = new Label("Feels Like: " + jFeelsLike.getAsString());
+        Label feelsLike = new Label("Feels Like: " + jFeelsLike.getAsString() + "°");
         Label humidity = new Label("Humidity: " + jHumidity.getAsString());
         Label windSpeed = new Label("Wind Speed: " + jWindSpeed.getAsString());
         Label windDegree = new Label("Wind Degree: " + jWindDegree.getAsString());
